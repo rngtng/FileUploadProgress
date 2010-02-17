@@ -1,0 +1,72 @@
+Developer Challenge
+
+Design and implement a system that will accept a multipart form upload (say, containing an audio file) while displaying a percentage progress.
+
+The basic HTML design should look like:
+
+* Display form with file input field
+* Display a title text field
+* Display a status text paragraph "select file"
+* Optionally display a submit button
+
+* Specification:
+* When the user picks a file from their computer and optionally presses the submit button, the upload begins.
+* While uploading, the status text paragraph should be updating with the current percentage complete at least once every 2 seconds.
+* While uploading, the user should be able to enter text into the title text field.
+* When the upload completes, the status text should display the path on the server to the saved file.
+
+Requirements:
+
+* The upload should honor proxy settings on the browser
+* The system must function behind a firewall that blocks all but port 80
+* The server must support at least 2 concurrent uploads
+* Any technology that can be web deployed to IE, Firefox, Safari, Chrome on any platform is supported
+
+
+Further Requirements:
+* No Flash (yik!!)
+* Rails
+* jQuery
+* Paperclip
+
+more lightweight: sinatra??
+
+* No extra module
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Cheating:
+
+http://railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html
+http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache
+http://www.therailsway.com/2009/4/23/uploading-files
+
+
+Howto:
+
+
+get latest apachemodule:
+http://github.com/mpokrywka/apache-upload-progress-module
+
+compile:
+sudo apxs -c -i -Wc,-arch -Wc,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
+
+create vhost
+
+####### OR ########
+mod_porter: http://modporter.com/
+
+get: http://mirrors.enquira.co.uk/apache/httpd/libapreq/libapreq2-2.12.tar.gz
+get: http://github.com/actionrails/modporter/tree/master
+
+ADD:
+ LoadModule apreq_module libexec/apache2/mod_apreq2.so
+ LoadModule porter_module libexec/apache2/mod_porter.so
+
+script/plugin install git://github.com/actionrails/modporter-plugin.git
+
+
+ ---------------------------
+create rails app
+add paperclip plugin
+
