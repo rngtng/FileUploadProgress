@@ -5,3 +5,4 @@ log/test.log
 public/index.html
 public/favicon.ico
 public/images/rails.png
+.DS_Store

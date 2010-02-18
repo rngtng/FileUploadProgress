@@ -1,0 +1,273 @@
+/* Override blueprint */
+body {
+  color : #666;
+  background: #fff url(/images/black.jpg) repeat-x; 
+}
+
+#container {
+  width:790px;
+  margin: 20px auto;
+}
+
+small {
+  font-size: 0.9em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  letter-spacing: -1px;
+}
+
+/* Entries have a bit larger text. */
+div.entry p {
+  font-size : 1.25em;
+  margin: 0 0 1.5em 0;
+}
+
+div.entry ul,  div.commentsblock ul {
+  font-size : 1.25em;
+  margin:0em 3em 1.5em ;
+}
+
+/* Navigation */
+#nav {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 2em; 
+  margin-bottom: 0.75em;
+  float: right;
+  position: relative;
+}
+
+#nav li {
+  float: left;
+  list-style: none;
+}
+
+#nav a {
+  float: left;
+  padding: 3px 13px 0 13px;
+  text-decoration: none;
+  color: #aaa;
+  border-left-style: solid;
+  border-left-width: 2px;
+}
+
+#nav a.last {
+  border-right-style: solid;
+  border-right-width: 2px;
+}
+
+#nav a:hover, #nav a.active {
+  color: #eee;
+  border-color: #aaa;
+}
+
+/* Header. */
+#header h1 {
+  color: #aaa;
+  display: inline;
+}
+
+#header p {
+  color: #666;
+}
+
+/* Entry. */
+div.entrybody img {
+  border: 1px solid #999;
+  margin-top: 4px;
+  padding: 6px;
+}
+
+/*div.entrybody h3 {*/
+
+#content {
+  margin-top: 1.5em;
+}
+
+#content h3 {
+  color: #ccc;
+  font-size: 2em;
+  margin-bottom: 0.25em;
+}
+
+div.entrybody a:link, div.entrybody a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted #3e8da7;
+  color: #3e8da7;
+}
+
+div.entrybody a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #3e8da7;
+  color: #3e8da7;
+}
+
+div.entrytitle a:link, div.entrytitle a:visited {
+  text-decoration: none;
+  color: #2fbe35;
+}
+
+div.entrytitle h2 {
+  margin-bottom: 0em;
+  color: #2fbe35;
+
+}
+div.entrytitle h4 {
+  color: #ccc;
+  margin-bottom: 0.5em;
+}
+
+
+
+/* Code entries. */
+div.entrybody pre, div.commentsblock pre {
+  background: #333;
+  color: #2fbe35;
+  padding:1em;
+  margin: 0;
+  margin-bottom: 1.5em;
+  font-family: "Courier New", Courier, mono;
+}
+
+/* Old entries have <code><pre></pre></code> */
+div.entrybody code, div.commentsblock code {
+  margin: 0;
+  white-space: pre;
+}
+
+/* Old entries have <code><pre></pre></code> */
+div.commentsblock pre, div.commentsblock code {
+  width: 526px;
+  overflow: auto;
+}
+
+/* Comments */
+
+/* Use same text size and entry body. */
+div.commentsblock p, div.commentsblock cite {
+  font-size : 1.25em;
+}
+
+div.commentsblock a:link, div.commentsblock a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted #3e8da7;
+  color: #3e8da7;
+}
+
+div.commentsblock a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #3e8da7;
+  color: #3e8da7;
+}
+
+.commentsblock textarea:focus, .commentsblock input:focus {
+  background: #eee;
+}
+
+/* Comment form */
+
+label {
+  font-weight: normal;
+  font-size: 1.2em;
+}
+
+label > a:link, label > a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted #666;
+  color: #666;
+}
+
+label > a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #666;
+}
+
+input {
+  width: 230px;
+  padding: 3px;
+  padding-left: 5px;
+}
+
+textarea {
+  width: 510px;
+  height: 180px;
+  padding: 5px;
+}
+
+input, textarea {
+  font-size: 1.1em;
+  border: 1px solid #a1a1a1;  
+  margin-bottom: 0.5em;
+}
+
+input:focus, textarea:focus {
+  background: #eee;
+  border: 1px solid #a1a1a1;
+}
+
+/* Entrymeta */
+
+span.filedto {
+  background: #fff url(icon_checkmark.gif) 1px no-repeat;
+  padding: 3px;
+  padding-left: 20px;
+}
+
+div.entrymeta {
+  margin-bottom: 1.5em;	
+}
+
+div.entrymeta a:link, div.entrymeta a:visited {
+  text-decoration: none;
+  border-bottom: 1px dotted #3e8da7;
+  color: #3e8da7;
+}
+
+
+div.entrymeta a:hover {
+  text-decoration: none;
+  border-bottom: 1px solid #3e8da7;
+  color: #3e8da7;
+}
+
+
+
+a.commentslink {
+  background: #fff url(icon_quote.gif) 1px no-repeat;
+  padding: 3px;
+  padding-left: 20px;
+}
+
+/* Fix Mozilla dotted borders. */
+a:active {
+  outline: none;
+}
+a:focus {
+  -moz-outline-style: none;
+}
+
+
+
+blockquote {
+  background: #3e8da7 url(../images/quote_blue.gif) no-repeat 0px top;
+  border: none;
+  color: #fff;
+  padding: 20px 20px 5px 50px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+  
+blockquote.blue {
+  background: #3e8da7 url(../images/quote_blue.gif) no-repeat 0px top;
+}
+
+blockquote.green {
+  background: #2fbe35 url(../images/quote_green.gif) no-repeat 0px top;
+}
+
+blockquote.red {
+  background: #ff1926 url(../images/quote_red.gif) no-repeat 0px top;
+}

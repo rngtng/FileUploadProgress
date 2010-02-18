@@ -28,6 +28,7 @@ Further Requirements:
 * Rails
 * jQuery
 * Paperclip
+* HTML 5 support right away
 
 more lightweight: sinatra??
 
@@ -39,10 +40,14 @@ Cheating:
 
 http://railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html
 http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache
+http://drogomir.com/blog/2008/6/30/upload-progress-script-with-safari-support
 http://www.therailsway.com/2009/4/23/uploading-files
+http://github.com/drogus/jquery-upload-progress
 
+http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2
 
 Howto:
+
 
 get apachemodule: http://github.com/mpokrywka/apache-upload-progress-module
 compile:  sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
@@ -55,9 +60,11 @@ add paperclip: http://jimneath.org/2008/04/17/paperclip-attaching-files-in-rails
                http://github.com/thoughtbot/paperclip
 add jQuery: http://railscasts.com/episodes/136-jquery
 add jRails: http://github.com/aaronchi/jrails
+add blueprint: http://blueprintcss.org/
 
 
-
+add asset controller:
+add asset model: 
 
 
 
