@@ -2,3 +2,6 @@ log/development.log
 log/production.log
 log/server.log
 log/test.log
+public/index.html
+public/favicon.ico
+public/images/rails.png
