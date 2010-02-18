@@ -44,15 +44,38 @@ http://www.therailsway.com/2009/4/23/uploading-files
 
 Howto:
 
-get latest apachemodule:
-http://github.com/mpokrywka/apache-upload-progress-module
-
-compile:
-sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
+get apachemodule: http://github.com/mpokrywka/apache-upload-progress-module
+compile:  sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
 create vhost
 
 ---------------------------
 create rails app
 
-add paperclip plugin
+add paperclip: http://jimneath.org/2008/04/17/paperclip-attaching-files-in-rails/ 
+               http://github.com/thoughtbot/paperclip
+add jQuery: http://railscasts.com/episodes/136-jquery
+add jRails: http://github.com/aaronchi/jrails
 
+
+
+
+
+
+
+
+- JSON-P Support
+You can also request progress updates by using JSON-P, if you are uploading the file from a different domain or 
+subdomain than the web server that is handling your original request. Adding a "callback=yourCallbackFunction" parameter 
+to your request to the progress server will activate this functionality. 
+
+For example, a request like:
+  http://uploads.yourdomain.com/progress?callback=jsonp123&X-Progress-ID=1234
+  
+Would return the JSON-P function: 
+  jsonp123(new Object({ 'state' : 'uploading', 'received' : 35587, 'size' : 716595, 'speed' : 35587 }));
+  
+The normal JSON request:
+  http://www.yourdomain.com/progress?X-Progress-ID=1234
+
+Would return the JSON data: 
+  new Object({ 'state' : 'uploading', 'received' : 35587, 'size' : 716595, 'speed' : 35587 })
