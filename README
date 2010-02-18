@@ -79,3 +79,20 @@ The normal JSON request:
 
 Would return the JSON data: 
   new Object({ 'state' : 'uploading', 'received' : 35587, 'size' : 716595, 'speed' : 35587 })
+
+
+########################################################################################################
+Other resources:
+
+http://sourceforge.net/projects/uber-uploader/
+http://www.sibsoft.net/xupload.html
+http://encodable.com/filechucker/
+http://talks.php.net/show/afup06/22 (PHP5)
+http://digitarald.de/project/fancyupload/ 
+  -> http://github.com/digitarald/digitarald-fancyupload (swiff/ajax)
+
+
+http://code.google.com/p/noswfupload/
+http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html
+http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html
+http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger
