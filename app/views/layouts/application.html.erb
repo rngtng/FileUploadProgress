@@ -22,15 +22,19 @@
          </div>
        </div>
        <!-- /header -->
-    
+             
        <!-- content -->
        <div class="span-14" id="content">
+          <%= flash_messages %>
+           
           <%= yield -%>
+          
        </div>
        <!-- /content -->
     
        <!-- sidebar -->
        <div class="span-5 push-1 last" id="sidebar">
+           <%= yield  :sidebar -%>
        </div>
        <!-- /sidebar -->
 

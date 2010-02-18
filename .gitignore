@@ -5,4 +5,7 @@ log/test.log
 public/index.html
 public/favicon.ico
 public/images/rails.png
+public/system
 .DS_Store
+db/development.sqlite3
+db/test.sqlite3

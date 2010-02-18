@@ -1,0 +1,37 @@
+<div class="entry">
+
+  <div class="entrytitle">
+    <h2>Upload your Files on the right side</h2> 
+  </div>
+
+  <div class="entrybody">
+    <p>Take care files may be deleted later!!</p>
+
+    <div id="assets" style="min-height: 500px;">
+        <%= render @assets %>
+    </div>
+      
+    </div>  
+
+</div>
+
+<hr class="space" />
+
+<% content_for :sidebar do %>
+
+   <div class="upload">
+     Select a File to upload...<br>
+       
+    <% form_for :asset, :html => { :multipart => true } do |f| %>
+      <%= f.file_field :file, :size => 15 %><br>
+      <%= f.submit %>
+    <% end %>
+   </div>
+       
+
+    <div id="dropzone">
+      ...or drag and drop in here    
+    </div>
+    
+<% end %>
+    
