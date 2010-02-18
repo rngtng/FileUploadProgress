@@ -44,29 +44,15 @@ http://www.therailsway.com/2009/4/23/uploading-files
 
 Howto:
 
-
 get latest apachemodule:
 http://github.com/mpokrywka/apache-upload-progress-module
 
 compile:
-sudo apxs -c -i -Wc,-arch -Wc,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
-
+sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
 create vhost
 
-####### OR ########
-mod_porter: http://modporter.com/
-
-get: http://mirrors.enquira.co.uk/apache/httpd/libapreq/libapreq2-2.12.tar.gz
-get: http://github.com/actionrails/modporter/tree/master
-
-ADD:
- LoadModule apreq_module libexec/apache2/mod_apreq2.so
- LoadModule porter_module libexec/apache2/mod_porter.so
-
-script/plugin install git://github.com/actionrails/modporter-plugin.git
-
-
- ---------------------------
+---------------------------
 create rails app
+
 add paperclip plugin
 
