@@ -5,7 +5,7 @@ class CreateAssets < ActiveRecord::Migration
       t.string  :file_file_name
       t.string  :file_content_type
       t.integer :file_file_size
-      t.text :comment
+      t.text    :comment
       
       t.timestamps
     end

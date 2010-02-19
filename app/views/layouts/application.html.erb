@@ -5,7 +5,7 @@
     <title>File Upload Progress | Developer Challenge</title>
     <%= stylesheet_link_tag 'blueprint/screen' %>
     <%= stylesheet_link_tag 'styles' %>
-    <%= javascript_include_tag 'jquery', 'application' %>
+    <%= javascript_include_tag 'jquery', 'application', 'jquery.uploadProgress' %>
   </head>
 
   <body>
@@ -39,5 +39,6 @@
        <!-- /sidebar -->
 
     </div>
+    <%= yield  :bottom -%>
   </body>
 </html>
