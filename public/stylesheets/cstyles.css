@@ -40,42 +40,24 @@ div.flash.error {
 
 /**********************************************/
 
-div.upload {
-    padding: 20px 0px;
-    width: 400px;
-}
-
-div#fileinputs {
-    position: relative;
-    cursor: pointer;
-}
-
-div.fakefile {
+#upload_button {
     width: 400px;
     height: 24px;
-    position: absolute;
-    top: 0px;
-    left: 0px;
     text-align: center;
-    z-index: 1;
     color: white;
     font-weight: bold;
     background-color: black;
     cursor: pointer;
+    display:block;
+    text-decoration: none;
 }
 
-div.upload #asset_file {
-    width: 400px;
-    height: 24px;
-    position: relative;
-    -moz-opacity:0;
-    filter:alpha(opacity: 0);
-    opacity: 0;
-    z-index: 2;
-    cursor: pointer;
+#upload_button:hover {
+    text-decoration: underline;
+    color: #EEAAAA;
 }
 
-.bar {
+#upload_progress_bar {
     width: 400px;
 }
 

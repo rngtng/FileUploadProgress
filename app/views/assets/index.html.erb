@@ -1,33 +1,27 @@
 <div class="entry">
 
   <div class="entrytitle">
-    <h2>Select a File to upload...</h2> 
+    <h2>Select a File to upload...</h2>
   </div>
 
+
+     <a href="#" id="upload_button">Upload</a>
+
   <div class="upload">
-   <% form_for :asset, :html => { :id => "upload", :multipart => true, :target => "upload_target" } do |f| %>
-   
-     <div id="fileinputs">
-       <%= f.file_field :file, :onchange => "$('#fileinputs').hide();$('#uploading').show();" %>
-       <div class="fakefile">
-           Select File
-       </div>
-     </div>
-     
-     <div id="uploading" style="display:none">
-         <div id="progress" class="bar">
-             <div id="progressbar">&nbsp;</div>
-            <div id="percents"></div>
-         </div>
+   <% form_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
+
+
+  
+     <div id="upload_progress_bar" style="display:none">
+        <div id="progressbar">&nbsp;</div>
+        <div id="percents"></div>
       </div>
-     
+
      <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
-     
+
      <%= f.submit %>
    <% end %>
   </div>
-
-
 
   <div class="entrybody">
     <p>Take care files may be deleted later!!</p>
@@ -35,7 +29,7 @@
     <div id="assets" style="min-height: 500px;">
         <%= render @assets %>
     </div>
-  </div>  
+  </div>
 
 </div>
 
@@ -43,29 +37,76 @@
 
 <% content_for :sidebar do %>
     <div id="dropzone">
-      ...or drag and drop in here    
+      ...or drag and drop in here
     </div>
-   
-   <iframe id="upload_target" name="upload_target" src="#" style="width:0;height:0;border:0px solid #fff;"></iframe>    
 <% end %>
 
-<% content_for :bottom do %>
-<script type="text/javascript" charset="utf-8">
-  $(function() {
-      $('form').uploadProgress({
-      /* scripts locations for safari */
-      jqueryPath: "/javascripts/jquery.js",
-      uploadProgressPath: "/javascripts/jquery.uploadProgress.js",
-      /* function called each time bar is updated */
-      uploading: function(upload) {$('#percents').html(upload.percents+'%');},
-      /* selector or element that will be updated */
-      progressBar: "#progressbar",
-      /* progress reports url */
-      progressUrl: "/progress",
-      /* how often will bar be updated */
-      interval: 1000
-      });
-  });        
-</script>
 
-<% end %>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+        var interval;
+
+        var upload = new AjaxUpload( $('#upload_button'), {
+			action: '/assets?X-Progress-ID=<%= @file_id  %>',
+			onSubmit : function(file, ext){
+			    var v = $('input[name=authenticity_token]').val();
+			    
+			    this.setData({
+					'authenticity_token': v,
+					'X-Progress-ID': <%= @file_id  %>
+				});
+				
+				$('#upload_button').hide();
+                $('#upload_progress_bar').show();
+
+				// If you want to allow uploading only 1 file at time,
+				// you can disable upload button
+				this.disable();
+
+				// Uploding -> Uploading. -> Uploading...
+				interval = window.setInterval(function(){
+				    
+                    jQuery.ajax({
+                        type: "GET",
+                        url: "/process?X-Progress-ID=<%= @file_id  %>",
+                        dataType: "json",
+                        success: function(upload) {
+                          if (upload.state == 'uploading') {
+                              $('#percents').text = upload.received
+                            // upload.percents = Math.floor((upload.received / upload.size)*1000)/10;
+                            // 
+                            // var bar = $.browser.safari ? $(options.progressBar, parent.document) : $(options.progressBar);
+                            // bar.css({width: upload.percents+'%'});
+                            // options.uploading(upload);
+                          }
+
+                          if (upload.state == 'done' || upload.state == 'error') {
+                            //window.clearTimeout(interval);
+                            //options.complete(upload);
+                          }
+
+                          if (upload.state == 'done') {
+                            //options.success(upload);
+                          }
+
+                          if (upload.state == 'error') {
+                            //options.error(upload);
+                          }
+                        }
+                      });
+                      
+				}, 1000);
+			},
+			onComplete: function(file, response){
+			    alert('done');
+                window.clearInterval(interval);
+                
+				// enable upload button
+				this.enable();
+
+				// add file to the list
+				$('<li></li>').appendTo('#example1 .files').text(file);
+			}
+		});
+    });
+  </script>

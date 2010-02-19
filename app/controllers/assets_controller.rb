@@ -1,8 +1,12 @@
 class AssetsController < ApplicationController
   
   def index
+    @file_id = 1
     @assets = Asset.all( :limit => 16, :order => "created_at DESC")
     render( :partial => @assets) and return if request.xhr?
+  end
+  
+  def show
   end
   
   def create
