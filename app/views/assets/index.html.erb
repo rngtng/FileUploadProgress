@@ -1,8 +1,33 @@
 <div class="entry">
 
   <div class="entrytitle">
-    <h2>Upload your Files on the right side</h2> 
+    <h2>Select a File to upload...</h2> 
   </div>
+
+  <div class="upload">
+   <% form_for :asset, :html => { :id => "upload", :multipart => true, :target => "upload_target" } do |f| %>
+   
+     <div id="fileinputs">
+       <%= f.file_field :file, :onchange => "$('#fileinputs').hide();$('#uploading').show();" %>
+       <div class="fakefile">
+           Select File
+       </div>
+     </div>
+     
+     <div id="uploading" style="display:none">
+         <div id="progress" class="bar">
+             <div id="progressbar">&nbsp;</div>
+            <div id="percents"></div>
+         </div>
+      </div>
+     
+     <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
+     
+     <%= f.submit %>
+   <% end %>
+  </div>
+
+
 
   <div class="entrybody">
     <p>Take care files may be deleted later!!</p>
@@ -10,37 +35,13 @@
     <div id="assets" style="min-height: 500px;">
         <%= render @assets %>
     </div>
-      
-    </div>  
+  </div>  
 
 </div>
 
 <hr class="space" />
 
 <% content_for :sidebar do %>
-
-   <div class="upload">
-     Select a File to upload...<br>
-       
-    <% form_for :asset, :html => { :id => "upload", :multipart => true, :target => "upload_target" } do |f| %>
-      <%= f.file_field :file, :size => 15, :onchange => "" %><br>
-      
-      <%#= f.hidden_field :file_id, :size => 15 %><br>
-      
-      <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
-      
-      <%= f.submit %>
-    <% end %>
-   </div>
-       
-   <div id="uploading">
-       <div id="progress" class="bar">
-           <div id="progressbar">&nbsp;</div>
-          <div id="percents"></div>
-       </div>
-    </div>
-
-
     <div id="dropzone">
       ...or drag and drop in here    
     </div>
@@ -49,23 +50,22 @@
 <% end %>
 
 <% content_for :bottom do %>
-
 <script type="text/javascript" charset="utf-8">
-$(function() {
-    $('form').uploadProgress({
-    /* scripts locations for safari */
-    jqueryPath: "/javascripts/jquery.js",
-    uploadProgressPath: "/javascripts/jquery.uploadProgress.js",
-    /* function called each time bar is updated */
-    uploading: function(upload) {$('#percents').html(upload.percents+'%');},
-    /* selector or element that will be updated */
-    progressBar: "#progressbar",
-    /* progress reports url */
-    progressUrl: "/progress",
-    /* how often will bar be updated */
-    interval: 1000
-    });
-});        
+  $(function() {
+      $('form').uploadProgress({
+      /* scripts locations for safari */
+      jqueryPath: "/javascripts/jquery.js",
+      uploadProgressPath: "/javascripts/jquery.uploadProgress.js",
+      /* function called each time bar is updated */
+      uploading: function(upload) {$('#percents').html(upload.percents+'%');},
+      /* selector or element that will be updated */
+      progressBar: "#progressbar",
+      /* progress reports url */
+      progressUrl: "/progress",
+      /* how often will bar be updated */
+      interval: 1000
+      });
+  });        
 </script>
 
 <% end %>

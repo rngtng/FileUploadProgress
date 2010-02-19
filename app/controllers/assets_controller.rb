@@ -8,10 +8,10 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.create(params[:asset])
     flash[:message] = "File successfully uploaded <br>#{@asset.file.path}"
-    head 200
+ #   head 200
   rescue => e    
     flash[:error] = "Error with uploading File: #{e.message}"
-    head 404
+#    head 404
   ensure
     redirect_to assets_path
   end

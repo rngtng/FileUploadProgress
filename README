@@ -46,6 +46,9 @@ http://github.com/drogus/jquery-upload-progress
 
 http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2
 
+
+http://casperfabricius.com/site/2009/03/26/uploading-multiple-files-with-progress-indicator-using-jquery-flash-and-rails/
+
 Howto:
 
 
@@ -62,6 +65,7 @@ add jQuery: http://railscasts.com/episodes/136-jquery
 add jRails: http://github.com/aaronchi/jrails
 add blueprint: http://blueprintcss.org/
 
+nice Fileupload style: http://www.quirksmode.org/dom/inputfile.html
 
 add asset controller:
 add asset model: 
