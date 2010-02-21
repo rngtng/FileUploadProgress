@@ -4,18 +4,15 @@
     <h2>Select a File to upload...</h2>
   </div>
 
-
-     <a href="#" id="upload_button">Upload</a>
+  <a href="#" id="upload_button">Upload</a>
 
   <div class="upload">
    <% form_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
 
-
-  
      <div id="upload_progress_bar" style="display:none">
-        <div id="progressbar">&nbsp;</div>
-        <div id="percents"></div>
-      </div>
+       <div id="progressbar">&nbsp;</div>
+       <div id="percents"></div>
+     </div>
 
      <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
 
@@ -35,78 +32,61 @@
 
 <hr class="space" />
 
-<% content_for :sidebar do %>
-    <div id="dropzone">
-      ...or drag and drop in here
-    </div>
-<% end %>
-
 
   <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
-        var interval;
+      var interval;
 
-        var upload = new AjaxUpload( $('#upload_button'), {
-			action: '/assets?X-Progress-ID=<%= @file_id  %>',
-			onSubmit : function(file, ext){
-			    var v = $('input[name=authenticity_token]').val();
-			    
-			    this.setData({
-					'authenticity_token': v,
-					'X-Progress-ID': <%= @file_id  %>
-				});
-				
-				$('#upload_button').hide();
-                $('#upload_progress_bar').show();
-
-				// If you want to allow uploading only 1 file at time,
-				// you can disable upload button
-				this.disable();
-
-				// Uploding -> Uploading. -> Uploading...
-				interval = window.setInterval(function(){
-				    
-                    jQuery.ajax({
-                        type: "GET",
-                        url: "/process?X-Progress-ID=<%= @file_id  %>",
-                        dataType: "json",
-                        success: function(upload) {
-                          if (upload.state == 'uploading') {
-                              $('#percents').text = upload.received
-                            // upload.percents = Math.floor((upload.received / upload.size)*1000)/10;
-                            // 
-                            // var bar = $.browser.safari ? $(options.progressBar, parent.document) : $(options.progressBar);
-                            // bar.css({width: upload.percents+'%'});
-                            // options.uploading(upload);
-                          }
-
-                          if (upload.state == 'done' || upload.state == 'error') {
-                            //window.clearTimeout(interval);
-                            //options.complete(upload);
-                          }
-
-                          if (upload.state == 'done') {
-                            //options.success(upload);
-                          }
-
-                          if (upload.state == 'error') {
-                            //options.error(upload);
-                          }
-                        }
-                      });
-                      
-				}, 1000);
-			},
-			onComplete: function(file, response){
-			    alert('done');
-                window.clearInterval(interval);
-                
-				// enable upload button
-				this.enable();
-
-				// add file to the list
-				$('<li></li>').appendTo('#example1 .files').text(file);
-			}
-		});
+      var upload = new AjaxUpload( $('#upload_button'), {
+        action: '/assets?X-Progress-ID=<%= @file_id  %>',
+        onSubmit : function(file, ext){
+            var v = $('input[name=authenticity_token]').val();
+            
+            this.setData({
+            'authenticity_token': v,
+            'X-Progress-ID': <%= @file_id  %>
+          });
+          
+          $('#upload_button').hide();
+          $('#upload_progress_bar').show();
+          this.disable();
+        
+          // Uploding -> Uploading. -> Uploading...
+          interval = window.setInterval(function(){            
+            jQuery.ajax({
+                type: "GET",
+                url: "/progress?X-Progress-ID=<%= @file_id  %>",
+                dataType: "json",
+                success: function(upload) {
+                  if (upload.state == 'uploading') {                             
+                     upload.percents = Math.floor((upload.received / upload.size)*1000)/10;
+                     $('#percents').html(upload.percents);
+                    // 
+                    // var bar = $.browser.safari ? $(options.progressBar, parent.document) : $(options.progressBar);
+                    // bar.css({width: upload.percents+'%'});
+                    // options.uploading(upload);
+                  }
+            
+                  if (upload.state == 'done' || upload.state == 'error') {
+                    window.clearInterval(interval);
+                    $('#upload_button').show();
+                    $('#upload_progress_bar').hide();
+                    this.enable();
+                  }
+                  if (upload.state == 'error') {
+                    alert("Error");
+                  }
+                }
+            });
+          }, 1000);
+          
+        },
+        onComplete: function(file, response){
+          alert(file);
+          window.clearInterval(interval);
+          this.enable();
+        }
+      });
+      
     });
   </script>
