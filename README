@@ -90,3 +90,5 @@ http://code.google.com/p/noswfupload/
 http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html
 http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html
 http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger
+
+uuid: http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/
