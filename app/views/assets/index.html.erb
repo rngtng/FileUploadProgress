@@ -7,13 +7,13 @@
   <a href="#" id="upload_button">Upload</a>
   
   <div id="upload_progress_bar" style="display:none">
-    <div id="progressbar">&nbsp;</div>
-    <div id="percents"></div>
+    <div id="progressbar">&nbsp;</div>    
   </div>
+  <div id="percents"></div>
   
   <div class="upload">
    <% form_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
-     <%= f.hidden_field :uuid, @asset_uuid %>
+     <%= f.hidden_field :uuid %>
      
      <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
 
@@ -38,12 +38,12 @@
       var interval;
 
       var upload = new AjaxUpload( $('#upload_button'), {
-        action: '/assets?X-Progress-ID=<%= @asset_uuid  %>',
+        action: '/assets?X-Progress-ID=<%= @asset.uuid  %>',
         name: 'asset[file]',
         onSubmit : function(file, ext){
           this.setData({
             'authenticity_token': $('input[name=authenticity_token]').val(),
-            'asset[uuid]': <%= @asset_uuid  %>
+            'asset[uuid]': '<%= @asset.uuid  %>'
           });
           
           $('#upload_button').hide();
@@ -53,7 +53,7 @@
           interval = window.setInterval(function(){            
             jQuery.ajax({
                 type: "GET",
-                url: "/progress?X-Progress-ID=<%= @asset_uuid  %>",
+                url: "/progress?X-Progress-ID=<%= @asset.uuid  %>",
                 dataType: "json",
                 success: function(upload) {
                   if (upload.state == 'uploading') {                             
@@ -78,8 +78,7 @@
           
         },
         onComplete: function(file, response){
-          alert(file);
-          alert(response);
+          alert(file + " " + response);
           window.clearInterval(interval);
           this.enable();
         }

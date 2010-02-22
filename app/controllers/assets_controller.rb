@@ -1,7 +1,7 @@
 class AssetsController < ApplicationController
   
   def index
-    @asset_uuid = Asset.generate_uuid
+    @asset = Asset.new
     @assets = Asset.all( :limit => 16, :order => "created_at DESC")
     render( :partial => @assets) and return if request.xhr?
   end
@@ -10,16 +10,12 @@ class AssetsController < ApplicationController
   end
   
   def create
-    @asset = Asset.find_or_initialize_by_file_id(params[:asset][:file_id])
+    @asset = Asset.find_or_initialize_by_uuid(params[:asset][:file_id])
     @asset.update_attributes(params[:asset])
         
-    flash[:message] = "File successfully uploaded <br>#{@asset.file.path}"
- #   head 200
+    render :text => "File successfully uploaded <br>#{@asset.file.path}", :status => 201
   rescue => e    
-    flash[:error] = "Error with uploading File: #{e.message}"
-#    head 404
-  ensure
-    redirect_to assets_path
+    render :text => "Error with uploading File: #{e.message}", :status => 404
   end
   
 end
