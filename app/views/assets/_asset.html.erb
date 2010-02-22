@@ -1,2 +1,4 @@
 
-<%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none"  %>
+<%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none"  %><br>
+<%= asset.comment %><br>
+<%= asset.file_content_type %>

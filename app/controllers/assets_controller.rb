@@ -6,11 +6,8 @@ class AssetsController < ApplicationController
     render( :partial => @assets) and return if request.xhr?
   end
   
-  def show
-  end
-  
   def create
-    @asset = Asset.find_or_initialize_by_uuid(params[:asset][:file_id])
+    @asset = Asset.find_or_initialize_by_uuid(params[:asset][:uuid])
     @asset.update_attributes(params[:asset])
         
     render :text => "File successfully uploaded <br>#{@asset.file.path}", :status => 201

@@ -12,7 +12,7 @@
   <div id="percents"></div>
   
   <div class="upload">
-   <% form_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
+   <% form_remote_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
      <%= f.hidden_field :uuid %>
      
      <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
