@@ -1,27 +1,4 @@
 
-blockquote {
-  background: #3e8da7 url(../images/quote_blue.gif) no-repeat 0px top;
-  border: none;
-  color: #fff;
-  padding: 5px;
-  margin-right: 3px;
-  margin-left: 3px;
-}
-  
-blockquote.blue {
-  background: #3e8da7 url(../images/quote_blue.gif) no-repeat 0px top;
-}
-
-blockquote.green {
-  background: #2fbe35 url(../images/quote_green.gif) no-repeat 0px top;
-}
-
-blockquote.red {
-  background: #ff1926 url(../images/quote_red.gif) no-repeat 0px top;
-}
-
-
-
 /* Entries have a bit larger text. */
 div.entry p {
   font-size : 1.25em;
@@ -114,11 +91,7 @@ div.entrytitle a:link, div.entrytitle a:visited {
   color: #2fbe35;
 }
 
-div.entrytitle h2 {
-  margin-bottom: 0em;
-  color: #2fbe35;
 
-}
 div.entrytitle h4 {
   color: #ccc;
   margin-bottom: 0.5em;

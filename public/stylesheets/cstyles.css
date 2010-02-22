@@ -9,13 +9,14 @@ body {
     margin: 20px auto;
 }
 
-small {
-    font-size: 0.9em;
-}
-
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     letter-spacing: -1px;
+}
+
+h2 {
+  margin-bottom: 0em;
+  color: #2fbe35;
 }
 
 div.flash {
@@ -38,23 +39,47 @@ div.flash.error {
     background: red;
 }
 
+
+/**********************************************/
+
+ol li {
+    margin-top: 80px;
+    margin-left: 40px;
+    font-size:60pt;
+    color:#DDD;
+}
+
+ol li div {
+    font-size:12pt;
+    color:#000;
+}
+
 /**********************************************/
 
 #upload_button {
-    width: 400px;
-    height: 24px;
-    text-align: center;
+    width:  400px;
     color: white;
+    text-align: center;
+    font-size: 15pt;
     font-weight: bold;
-    background-color: black;
+    text-decoration: none;
+        
+    background-color: #2fbe35;
     cursor: pointer;
     display:block;
-    text-decoration: none;
+
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    
+    padding: 5px;
+    
+    margin: 0px auto;
 }
 
 #upload_button:hover {
-    text-decoration: underline;
-    color: #EEAAAA;
+    background-color: green;
 }
 
 #upload_progress_bar {
