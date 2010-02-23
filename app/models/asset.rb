@@ -1,9 +1,13 @@
 class Asset < ActiveRecord::Base
   
   has_attached_file :file
-  
-  validates_attachment_presence :file
+  #validates_attachment_presence :file
+  validates_presence_of :uuid
 
+  def uuid=(uuid)
+    @uuid = uuid
+  end
+  
   def uuid
     @uuid ||= Asset.generate_uuid
   end
