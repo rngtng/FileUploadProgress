@@ -70,13 +70,12 @@ which adds an access point to Apache, so you can easily retrieve the total and u
 
 ## A quick step by step Howto:
 
-get apachemodule, compile with: 
-`sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c`
+* get apachemodule, compile with: 
+ `sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c`
 
-update apache conf and create vhost
-
-create rails app
-add plugins
+* update apache conf and create vhost
+* create rails app
+* add plugins
 
   * paperclip:
      `config.gem 'paperclip', :source => 'http://gemcutter.org'`
@@ -85,16 +84,15 @@ add plugins
   * jQuery + jRails:
       `script/plugin install git://github.com/aaronchi/jrails.git`
   
-add blueprint css files
-add basic html layout
-add asset controller
-add asset model, add [uuid](http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/)
-add tests
-add [ajaxupload](http://valums.com/ajax-upload/) for background upload
-add jQuery Ajax call to check upload progress
-finish it up and make it nice
-
-deploy [with capistrano and git+passenger](http://www.zorched.net/2008/06/17/capistrano-deploy-with-git-and-passenger/) 
+* add blueprint css files
+* add basic html layout
+* add asset controller
+* add asset model, add [uuid](http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/)
+* add tests
+* add [ajaxupload](http://valums.com/ajax-upload/) for background upload
+* add jQuery Ajax call to check upload progress
+* finish it up and make it nice
+* deploy [with capistrano and git+passenger](http://www.zorched.net/2008/06/17/capistrano-deploy-with-git-and-passenger/) 
 
 
 ## Further reading and other resources:
