@@ -1,4 +1,13 @@
 
-<%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none"  %><br>
-<%= asset.comment %><br>
-<%= asset.file_content_type %>
+  <% if asset.file.path %>
+    <% if asset.file_content_type =~ /image/  %>
+      <%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none"  %>
+    <% else %>
+      <%= asset.file.path %>
+     <% end %>
+  <% else %>
+   <em>no file yet</em>
+  <% end %>
+  <br>  
+  <%= asset.file_file_size.to_i / 1024 %> KB
+  <%= asset.comment %>

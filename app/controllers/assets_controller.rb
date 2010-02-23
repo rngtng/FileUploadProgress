@@ -5,8 +5,9 @@ class AssetsController < ApplicationController
     render @assets and return if request.xhr?
   end
 
-  def new
+  def show
     @asset = Asset.find_by_id( params[:id] )
+    render @asset if request.xhr?
   end
   
   def new
@@ -16,10 +17,10 @@ class AssetsController < ApplicationController
   def create
     @asset = Asset.find_or_initialize_by_uuid(params[:asset][:uuid])
     @asset.update_attributes(params[:asset])
-        
-    render :text => "File successfully uploaded <br>#{@asset.file.path}", :status => 201
-  rescue => e    
-    render :text => "Error with uploading File: #{e.message}", :status => 404
+    
+    render @asset if request.xhr?
+   rescue => e
+    render :text => "Error with uploading File: #{e.message}", :status => 500
   end
   
 end

@@ -6,8 +6,12 @@ body {
 
 /* Header. */
 #header h1 {
-  color: #aaa;
   display: inline;
+}
+
+#header a {  
+  color: #aaa;  
+  text-decoration:none;
 }
 
 #header p {
@@ -93,12 +97,10 @@ div.flash.error {
 }
 
 .listentry4 {
-    font-weight: bold;
-    font-size:10pt;
-    margin-top: 50px;
-    height: 50px;
-    line-height: 20pt;
-    text-align: center;
+  font-weight: bold;
+  font-size:20pt;
+  height: 260px;
+  line-height: 20pt;
 }
 
 /**********************************************/
@@ -198,4 +200,26 @@ input:hover {
 textarea:focus {
     background: #efefef;
     border: 1px solid #999;
+}
+
+
+/*******************************/
+
+#asset {
+  width: 100%; 
+  text-align:center;
+  font-size: 10pt;
+  color: black;
+}
+
+#others {
+  margin-left: 27px;
+  padding: 30px;
+  color: #38ACEC;
+  text-decoration: none;
+}
+
+#others:hover {    
+  color: #1569C7;
+  text-decoration: underline;  
 }
