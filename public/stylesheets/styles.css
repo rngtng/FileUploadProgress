@@ -24,6 +24,11 @@ body {
     margin: 20px auto;
 }
 
+#content {
+    min-height:550px;
+}
+
+
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     letter-spacing: -1px;
@@ -35,27 +40,6 @@ h2 {
   margin-bottom: 0px;
   color: #1569C7;
 }
-
-div.flash {
-    width: 470px;
-    font-weight: bold;
-    text-align: center;
-    border: 1px black;
-    font-size : 1.6em;
-    color: white;
-    padding: 10px;
-    margin-right: 30px;
-    margin-left: 30px;
-}
-
-div.flash.message {
-    background: green;
-}
-
-div.flash.error {
-    background: red;
-}
-
 
 /**********************************************/
 
@@ -205,12 +189,18 @@ textarea:focus {
 
 /*******************************/
 
-#asset {
-  width: 100%; 
-  text-align:center;
-  font-size: 10pt;
-  color: black;
+.asset {
+    font-size: 10pt;
+    color: black;
+    text-align:center;
+    padding-top:60px;
 }
+
+
+#assets {
+    width: 100%;    
+}
+
 
 #others {
   margin-left: 27px;
@@ -222,4 +212,19 @@ textarea:focus {
 #others:hover {    
   color: #1569C7;
   text-decoration: underline;  
+}
+
+
+#sidebar {
+    width: 100%;
+    text-align: right;
+    color: #DDD;
+}
+
+#sidebar a {
+    color: #DDD;
+}
+
+#sidebar a:hover {
+    color: #BBB;
 }

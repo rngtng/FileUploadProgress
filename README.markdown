@@ -62,8 +62,10 @@ which adds an access point to your Apache, so you can easily get the total and r
 
 
 ## Future Improvements
-* HTML 5 features
-* No extra Apache module
+* add HTML 5 features (Drag'n Drop, multiple??)
+* Get rid of Apache module
+* better error handling
+* fix *hover* for file select button
 
 
 ## A quick step by step Howto:
