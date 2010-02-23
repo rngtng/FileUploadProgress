@@ -98,20 +98,20 @@ deploy [with capistrano and git+passenger](http://www.zorched.net/2008/06/17/cap
 
 
 ## Further reading and other resources:
-* [](http://railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html)
-* [](http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache)
-* [](http://drogomir.com/blog/2008/6/30/upload-progress-script-with-safari-support)
-* [](http://www.therailsway.com/2009/4/23/uploading-files)
-* [](http://github.com/drogus/jquery-upload-progress)
-* [](http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2)
-* [](http://casperfabricius.com/site/2009/03/26/uploading-multiple-files-with-progress-indicator-using-jquery-flash-and-rails)
-* [](http://sourceforge.net/projects/uber-uploader)
-* [](http://www.sibsoft.net/xupload.html)
-* [](http://encodable.com/filechucker)
-* [](http://talks.php.net/show/afup06/22) - PHP5
-* [](http://github.com/digitarald/digitarald-fancyupload) - with Flash
-* [](http://code.google.com/p/noswfupload) - without Flash
-* [](http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html) - Mutiple Files
-* [](http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html) - HTML5
-* [](http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger) - Sinatra
-* [](http://www.quirksmode.org/dom/inputfile.html) - nice Fileupload style
+* <http://railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html>
+* <http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache>
+* <http://drogomir.com/blog/2008/6/30/upload-progress-script-with-safari-support>
+* <http://www.therailsway.com/2009/4/23/uploading-files)>
+* <http://github.com/drogus/jquery-upload-progress>
+* <http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2>
+* <http://casperfabricius.com/site/2009/03/26/uploading-multiple-files-with-progress-indicator-using-jquery-flash-and-rails>
+* <http://sourceforge.net/projects/uber-uploader>
+* <http://www.sibsoft.net/xupload.html>
+* <http://encodable.com/filechucker>
+* <http://talks.php.net/show/afup06/22> - PHP5
+* <http://github.com/digitarald/digitarald-fancyupload> - with Flash
+* <http://code.google.com/p/noswfupload> - without Flash
+* <http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html> - Mutiple Files
+* <http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html> - HTML5
+* <http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger> - Sinatra
+* <http://www.quirksmode.org/dom/inputfile.html> - nice Fileupload style
