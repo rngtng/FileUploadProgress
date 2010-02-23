@@ -4,12 +4,8 @@ class Asset < ActiveRecord::Base
   #validates_attachment_presence :file
   validates_presence_of :uuid
 
-  def uuid=(uuid)
-    @uuid = uuid
-  end
-  
-  def uuid
-    @uuid ||= Asset.generate_uuid
+  default_value_for :uuid do 
+    Asset.generate_uuid
   end
 
   def self.generate_uuid

@@ -1,4 +1,4 @@
-Developer Challenge
+=== Developer Challenge === 
 
 Design and implement a system that will accept a multipart form upload (say, containing an audio file) while displaying a percentage progress.
 
@@ -23,16 +23,23 @@ Requirements:
 * Any technology that can be web deployed to IE, Firefox, Safari, Chrome on any platform is supported
 
 
-Further Requirements:
-* No Flash (yik!!)
-* Rails
+
+
+* Rails 2.3.5
 * jQuery
 * Paperclip
-* HTML 5 support right away
+* Blueprint CSS
 
-more lightweight: sinatra??
+* Background File upload: Ajaxupload http://valums.com/ajax-upload/
+* Upload Progress count: apache-upload-progress-module module: http://github.com/mpokrywka/apache-upload-progress-module
+* No Flash (yik!!)
 
-* No extra module
+* Apache + passenger
+* capistrano
+
+Future Improvements
+* HTML 5 features
+* No extra Apache module
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -46,15 +53,13 @@ http://github.com/drogus/jquery-upload-progress
 
 http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2
 
-
 http://casperfabricius.com/site/2009/03/26/uploading-multiple-files-with-progress-indicator-using-jquery-flash-and-rails/
 
 Howto:
 
-
 get apachemodule: http://github.com/mpokrywka/apache-upload-progress-module
 compile:  sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c
-create vhost
+update apache conf and create vhost
 
 ---------------------------
 create rails app
@@ -65,14 +70,12 @@ add jQuery: http://railscasts.com/episodes/136-jquery
 add jRails: http://github.com/aaronchi/jrails
 add blueprint: http://blueprintcss.org/
 
-nice Fileupload style: http://www.quirksmode.org/dom/inputfile.html
-
-add asset controller:
-add asset model: 
+add asset controller
+add asset model
 
 add ajaxupload for paralell processing: http://valums.com/ajax-upload/
 
-add capistrano deplox for git+passenger: http://www.zorched.net/2008/06/17/capistrano-deploy-with-git-and-passenger/
+add capistrano deploy for git+passenger: http://www.zorched.net/2008/06/17/capistrano-deploy-with-git-and-passenger/
 
 
 ########################################################################################################
@@ -86,11 +89,10 @@ http://digitarald.de/project/fancyupload/
   -> http://github.com/digitarald/digitarald-fancyupload (swiff/ajax)
 
 
-http://code.google.com/p/noswfupload/
-http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html
-http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html
-http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger
-
-uuid: http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/
-
+flashless uploads: http://code.google.com/p/noswfupload/
+mutiple: http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html
+html5:    http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html
+sinatra:  http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger
+uuid:       http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/
 nice lists: http://print.wordpress.com/2006/02/22/css-beautifully-numbered-lists/
+nice Fileupload style: http://www.quirksmode.org/dom/inputfile.html

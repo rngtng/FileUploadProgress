@@ -12,6 +12,5 @@ class AssetTest < ActiveSupport::TestCase
     asset2 = Asset.new
     assert_not_equal  asset1.uuid, asset2.uuid
   end
-
   
 end
