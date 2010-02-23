@@ -30,14 +30,14 @@ According to the specs, two major issues had to be solved:
 1. upload the file in background, while user enters additional title/comment/text to the file
 2. get the upload progress and show it to the user
 
-Usually, Flash solutions addresses those problems, but bring other disadvantages as well (wrong version/not installed/disabled). So I was looking for a solution without Flash. The latest specs of HTML5 give some further possibilities as well, but is not supported by majority of web browsers yet. *See sources at the bottom for further info*
+Usually, Flash solutions address those problems, but bring other disadvantages as well (wrong version/not installed/disabled). So I was looking for a solution without Flash. The latest specs of HTML5 give some further possibilities as well, but are not supported by majority of current web browsers (greetings to IE - ahhrgg!!!). *See sources at the bottom for further info*
 
-Luckily, I didn't had to reinvent the wheel, as there are already solutions for both problems out there.  For the
+Luckily, I didn't had to reinvent the wheel, as there are already good solutions for both problems out there.  For the
 background upload, [Ajaxupload](http://valums.com/ajax-upload/) looked just fine for me. It's a jQuery implementation
 of uploading a file to a hidden iFrame which happens in background and doesn't block the user from adding additional infromation.
 
-To track the upload progress, I found the [Apache-upload-progress Module](http://github.com/mpokrywka/apache-upload-progress-module),
-which adds an access point to your Apache, so you can easily get the total and received file size in JSON format.
+To track the upload progress, I used the [Apache-upload-progress Module](http://github.com/mpokrywka/apache-upload-progress-module),
+which adds an access point to Apache, so you can easily retrieve the total and uploaded file size in JSON format.
 
 
 
