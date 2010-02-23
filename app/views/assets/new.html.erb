@@ -18,22 +18,22 @@
          <div id="percents">0%</div>
      </div>
      </div>
-     
+
      <div id="step2" style="display:none">
      <div class="span-3 listnr">2.</div>
      <div class="span-14 listentry2 last">
         Thanks. We're producing some traffic now.<br>
-        Hang on and add a title or comment:  
+        Hang on and add a title or comment:
         <% remote_form_for :asset, :url => assets_path, :update => "asset", :success => "$('#step3').fadeIn(800);", :html => { :id => "upload", :multipart => true } do |f| %>
           <%= f.hidden_field :uuid, :value => @asset.uuid %>
-        
+
           <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
-        
+
           <%= f.submit "save"%>
         <% end %>
      </div>
      </div>
-     
+
      <div id="step3" style="display:none">
      <div class="span-3 listnr">3.</div>
      <div class="span-14 listentry3 last">
@@ -41,14 +41,14 @@
         <div id="asset"></div>
      </div>
      </div>
- 
-     <div id="step4" style="display:none">     
+
+     <div id="step4" style="display:none">
      <div class="span-3 listnr">&nbsp;</div>
      <div class="span-14 listentry4 last">
        <%= link_to "See how others produced traffic", assets_path, :id =>"others" %>
      </div>
      </div>
-     
+
   </div>
 
 <script type="text/javascript" charset="utf-8">
@@ -69,7 +69,7 @@
         this.disable();
         $('#upload_button').css({background: '#DDD'});
         $('#upload_button').html('uploading...');
-         
+
         interval = window.setInterval(function(){
           jQuery.ajax({
               type: "GET",
@@ -77,7 +77,7 @@
               dataType: "json",
               success: function(upload) {
                 if (upload.state == 'uploading') {
-                   upload.percents = Math.floor((upload.received / upload.size)*100);                   
+                   upload.percents = Math.floor((upload.received / upload.size)*100);
                    $('#progressbar').css({width: upload.percents+'%'});
                    if(upload.percents > 0) upload.percents -= 1; //a bit of cheating here for better UX, as 100% upload doesn't mean it's fully finished
                    $('#percents').html( upload.percents + '%');
@@ -86,12 +86,12 @@
                 if (upload.state == 'done') {
                   window.clearInterval(interval);
                 }
-                
+
                 if (upload.state == 'error') {
                   this.enable();
                   window.clearInterval(interval);
                   $('#upload_button').css({background: 'red'});
-                  $('#upload_button').html('error');                  
+                  $('#upload_button').html('error');
                 }
               }
           });
@@ -100,8 +100,8 @@
       },
       onComplete: function(file, response) {
         window.clearInterval(interval);
-                
-        $('#upload_button').html('done');       
+
+        $('#upload_button').html('done');
         $('#progressbar').css({width: '100%'});
         $('#percents').html('100%'); //now we have 100%
         $('#step3').fadeIn(800);
@@ -111,5 +111,5 @@
     });
 
   });
-  
+
 </script>
