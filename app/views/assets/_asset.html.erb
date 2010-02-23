@@ -1,12 +1,12 @@
 
   <% if asset.file.path %>
     <% if asset.file_content_type =~ /image/  %>
-      <%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none"  %>
+      <%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none, border:1px; padding: 3px;"  %><br>
     <% end %>
     <%= asset.file_file_size.to_i / 1024 %> KB<br>
-    <%= asset.file.path %>
+    <%= asset.file.path.gsub( RAILS_ROOT, '').gsub('/public/system', '') %>
   <% else %>
-   <em>no file yet</em>
+    <em>file still uploading...</em>
   <% end %>
   <br>
   <%= asset.comment %>

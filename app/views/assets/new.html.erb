@@ -37,9 +37,12 @@
      <div id="step3" style="display:none">
      <div class="span-3 listnr">3.</div>
      <div class="span-14 listentry3 last">
-        <p>Hossa! Done. Here it is:</p>
+        <p>Hossa! Saved:</p>
         <div id="asset"></div>
      </div>
+     </div>
+ 
+     <div id="step4" style="display:none">     
      <div class="span-3 listnr">&nbsp;</div>
      <div class="span-14 listentry4 last">
        <%= link_to "See how others produced traffic", assets_path, :id =>"others" %>
@@ -63,7 +66,7 @@
         });
 
         $('#step1b').show();
-        $('#step2').fadeIn(300);
+        $('#step2').fadeIn(600);
         this.disable();
         $('#upload_button').css({background: '#DDD'});
         $('#upload_button').html('uploading...');
@@ -104,6 +107,7 @@
         $('#percents').html('100%'); //now we have 100%
         $('#step3').show();
         $('#asset').html(response);
+        $('#step4').fadeIn(600);
       }
     });
 
