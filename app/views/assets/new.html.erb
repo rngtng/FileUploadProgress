@@ -24,7 +24,7 @@
      <div class="span-14 listentry2 last">
         Thanks. We're producing some traffic now.<br>
         Hang on and add a title or comment:  
-        <% remote_form_for :asset, :url => assets_path, :update => "asset", :success => "$('#step3').show();", :html => { :id => "upload", :multipart => true } do |f| %>
+        <% remote_form_for :asset, :url => assets_path, :update => "asset", :success => "$('#step3').fadeIn(800);", :html => { :id => "upload", :multipart => true } do |f| %>
           <%= f.hidden_field :uuid, :value => @asset.uuid %>
         
           <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
@@ -65,7 +65,7 @@
         });
 
         $('#step1b').show();
-        $('#step2').fadeIn(600);
+        $('#step2').fadeIn(800);
         this.disable();
         $('#upload_button').css({background: '#DDD'});
         $('#upload_button').html('uploading...');
@@ -104,9 +104,9 @@
         $('#upload_button').html('done');       
         $('#progressbar').css({width: '100%'});
         $('#percents').html('100%'); //now we have 100%
-        $('#step3').show();
+        $('#step3').fadeIn(800);
         $('#asset').html(response);
-        $('#step4').fadeIn(600);
+        $('#step4').fadeIn(800);
       }
     });
 

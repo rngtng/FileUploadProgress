@@ -4,6 +4,7 @@ Design and implement a system that will accept a multipart form upload (say, con
 
 ## Structure
 The basic HTML design should look like:
+
 * Display form with file input field
 * Display a title text field
 * Display a status text paragraph "select file"
@@ -24,7 +25,14 @@ The basic HTML design should look like:
 
 ## Solution
 
-* No Flash (yik!!)
+I came up with a small&simple app called *The Traffic Machine* - a demonstration of background File Upload with Progress Bar.
+
+According to the specs, two major issues had to be solved: 
+1. upload the file in background, while user enters additional title/comment/text to the file
+2. get the upload progress and show it to the user
+
+Luckly, I didn't had to reinvent the wheel, as there are already solutions for both problems out there. 
+No Flash (yuck!!)
 
 ### Basic Infrastrukture
 * [Rails 2.3.5](http://rubyonrails.org/)
@@ -34,69 +42,70 @@ The basic HTML design should look like:
 * [Blueprint CSS](http://blueprintcss.org/)
 
 ### The Magic
-* Background File upload: [Ajaxupload]() http://valums.com/ajax-upload/
-* Upload Progress count: [Apache-upload-progress-module module](http://github.com/mpokrywka/apache-upload-progress-module
+* Background File upload: [Ajaxupload](http://valums.com/ajax-upload/) 
+* Upload Progress count: [Apache-upload-progress-module module](http://github.com/mpokrywka/apache-upload-progress-module)
 
 ### Deployment
 * Apache + passenger
 * capistrano
 * sqlLite DB
-* git 
+* git @ [github.com/rngtng](http://github.com/rngtng/FileUploadProgress) 
 
 ## Future Improvements
 * HTML 5 features
 * No extra Apache module
 
----------------------------------------
 
-## A bit more detailed Howto:
+## A quick step by step Howto:
 
 get apachemodule: http://github.com/mpokrywka/apache-upload-progress-module
-compile: `sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c`
+compile: 
+
+`sudo apxs -c -i -a -Wc,-arch -Wc,ppc7400 -Wl,-arch -Wl,ppc7400  -Wc,-arch -Wc,x86_64 -Wl,-arch -Wl,x86_64 -Wc,-arch -Wc,i386 -Wl,-arch -Wl,i386 mod_upload_progress.c`
+
 update apache conf and create vhost
 
 create rails app
 add plugins
-  * paperclip
-  * default value
+
+  * paperclip:
+  * default value: 
+     `script/plugin install git://github.com/FooBarWidget/default_value_for.git`
   * jQuery
   * jRails
   
-add blueprint
+add blueprint css files
+
+add basic html layout
 
 add asset controller
-add asset model
+add asset model, add [uuid](http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/)
 
-add ajaxupload for paralell processing: http://valums.com/ajax-upload/
-
+add [ajaxupload](http://valums.com/ajax-upload/) for background upload
 add ajax call to check upload progress
 
-make it nice
+finish it up and make it nice
 
-deploy with capistrano and git+passenger: http://www.zorched.net/2008/06/17/capistrano-deploy-with-git-and-passenger/
+deploy [with capistrano and git+passenger](http://www.zorched.net/2008/06/17/capistrano-deploy-with-git-and-passenger/) 
 
 
----------------------------------------
+## Further reading and other resources:
+* http://railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html
+* http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache
+* http://drogomir.com/blog/2008/6/30/upload-progress-script-with-safari-support
+* http://www.therailsway.com/2009/4/23/uploading-files
+* http://github.com/drogus/jquery-upload-progress
+* http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2
+* http://casperfabricius.com/site/2009/03/26/uploading-multiple-files-with-progress-indicator-using-jquery-flash-and-rails/
+* http://sourceforge.net/projects/uber-uploader/
+* http://www.sibsoft.net/xupload.html
+* http://encodable.com/filechucker/
+* PHP5: http://talks.php.net/show/afup06/22
+* with Flash: http://github.com/digitarald/digitarald-fancyupload
+* without Flash: http://code.google.com/p/noswfupload/
+* Mutiple: http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html
+* HTML5:    http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html
+* Sinatra:  http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger
+* nice lists: http://print.wordpress.com/2006/02/22/css-beautifully-numbered-lists/
+* nice Fileupload style: http://www.quirksmode.org/dom/inputfile.html
 
-## Further reading:
-http://railsillustrated.com/screencast-file-uploads-progress-in-rails-passenger.html
-http://drogomir.com/blog/2008/6/18/upload-progress-bar-with-mod_passenger-and-apache
-http://drogomir.com/blog/2008/6/30/upload-progress-script-with-safari-support
-http://www.therailsway.com/2009/4/23/uploading-files
-http://github.com/drogus/jquery-upload-progress
-http://adamelliot.com/posts/using-paperclip-with-datamapper-sinatra--2
-http://casperfabricius.com/site/2009/03/26/uploading-multiple-files-with-progress-indicator-using-jquery-flash-and-rails/
-
-## Other resources:
-http://sourceforge.net/projects/uber-uploader/
-http://www.sibsoft.net/xupload.html
-http://encodable.com/filechucker/
-PHP5: http://talks.php.net/show/afup06/22
-Flash: http://github.com/digitarald/digitarald-fancyupload
-flashless uploads: http://code.google.com/p/noswfupload/
-mutiple: http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html
-html5:    http://rakaz.nl/2009/08/uploading-multiple-files-using-html5.html
-sinatra:  http://serverfault.com/questions/111721/how-can-i-do-a-large-file-upload-using-sinatra-haml-nginx-and-passenger
-uuid:       http://ariejan.net/2008/08/12/ruby-on-rails-uuid-as-your-activerecord-primary-key/
-nice lists: http://print.wordpress.com/2006/02/22/css-beautifully-numbered-lists/
-nice Fileupload style: http://www.quirksmode.org/dom/inputfile.html
