@@ -1,9 +1,16 @@
 class AssetsController < ApplicationController
   
   def index
-    @asset = Asset.new
     @assets = Asset.all( :limit => 16, :order => "created_at DESC")
-    render( :partial => @assets) and return if request.xhr?
+    render @assets and return if request.xhr?
+  end
+
+  def new
+    @asset = Asset.find_by_id( params[:id] )
+  end
+  
+  def new
+    @asset = Asset.new
   end
   
   def create

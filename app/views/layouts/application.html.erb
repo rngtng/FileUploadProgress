@@ -5,7 +5,6 @@
     <title>The Traffic Machine | File Upload Progress Demo - Developer Challenge</title>
     <%= stylesheet_link_tag 'blueprint/screen' %>
     <%= stylesheet_link_tag 'styles' %>
-    <%= stylesheet_link_tag 'cstyles' %>
     
     <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js' %>
     
@@ -28,7 +27,7 @@
        <!-- /header -->
              
        <!-- content -->
-       <div class="span-14" id="content">
+       <div class="span-17" id="content">
           <%= flash_messages %>
            
           <%= yield -%>
@@ -37,7 +36,7 @@
        <!-- /content -->
     
        <!-- sidebar -->
-       <div class="span-5 push-1 last" id="sidebar">
+       <div class="span-2 push-1 last" id="sidebar">
            <%= yield  :sidebar -%>
        </div>
        <!-- /sidebar -->

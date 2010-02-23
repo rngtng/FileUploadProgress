@@ -1,0 +1,105 @@
+<div>
+
+  <div class="entrytitle">
+    <h2>Hi there! Let's produce some traffic...</h2>
+  </div>
+
+  <div class="entrybody">
+     <div class="span-3 listnr">1.</div>
+     <div class="span-14 listentry last">
+        <a href="#" id="upload_button">Choose the largest file you can get...</a>
+     </div>
+
+     <div id="step1b" style="display:none">
+     <div class="span-3">&nbsp;</div>
+     <div class="span-14 listentryprog last">
+         <div id="upload_progress_bar">
+           <div id="progressbar">&nbsp;</div>
+         </div>
+         <div id="percents">100%</div>
+     </div>
+     </div>
+     
+     <div id="step2" style="display:none">
+     <div class="span-3 listnr">2.</div>
+     <div class="span-14 listentry2 last">
+        Thanks. We're producing some traffic now.<br>
+        Hang on and add some comment:
+                
+        <% form_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
+          <%= f.hidden_field :uuid %>
+        
+          <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
+        
+          <%= f.submit "save comment"%>
+        <% end %>
+     </div>
+     </div>
+     
+     <div id="step3" style="display:none">
+     <div class="span-3 listnr">3.</div>
+     <div class="span-14 listentry3 last">
+        <p>Hossa! Done. Here it is:</p>
+        <div id="asset"></div>    
+        <%= link_to "See what others have produced", assets_path %>
+     </div>
+     </div>
+     
+  </div>
+</div>
+
+<hr class="space" />
+
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+      var interval;
+
+      var upload = new AjaxUpload( $('#upload_button'), {
+        action: '/assets?X-Progress-ID=<%= @asset.uuid  %>',
+        name: 'asset[file]',
+        onSubmit : function(file, ext){
+          this.setData({
+            'authenticity_token': $('input[name=authenticity_token]').val(),
+            'asset[uuid]': '<%= @asset.uuid  %>'
+          });
+
+          $('#step1b').show();
+          $('#step2').show();
+          this.disable();
+
+          interval = window.setInterval(function(){
+            jQuery.ajax({
+                type: "GET",
+                url: "/progress?X-Progress-ID=<%= @asset.uuid  %>",
+                dataType: "json",
+                success: function(upload) {
+                  if (upload.state == 'uploading') {
+                     upload.percents = Math.floor((upload.received / upload.size)*100);
+                     var bar = $.browser.safari ? $('#progressbar', parent.document) : $('#progressbar');
+                     bar.css({width: upload.percents+'%'});
+                     $('#percents').html((upload.percents-1)+'%');
+                  }
+
+                  if (upload.state == 'done' || upload.state == 'error') {
+                    window.clearInterval(interval);
+                  }
+                  if (upload.state == 'error') {
+                    alert("Error");
+                    this.enable();                    
+                  }
+                }
+            });
+          }, 1500);
+
+        },
+        onComplete: function(file, response){
+          //alert(file + " " + response);
+          window.clearInterval(interval);
+          $('#percents').html('100%');
+          this.enable();
+          $('#step3').show();
+        }
+      });
+
+    });
+  </script>

@@ -1,102 +1,15 @@
-<div class="entry">
+<div>
 
-  <div class="entrytitle">
-    <h2>Hi there! Wanna produce some traffic...!?</h2>
-  </div>
-
-  <ol>
-    <li>
-        <a href="#" id="upload_button">Choose the largest file you can get...</a>
-    </li>
-
-    <li><div>
-      <p>Thanks. We're producing some traffic now. So hang on and add some comments to your file:</p>
-
-      <div id="upload_progress_bar" style="display:none">
-        <div id="progressbar">&nbsp;</div>
-      </div>
-      <div id="percents"></div>
-
-       <% form_remote_for :asset, :html => { :id => "upload", :multipart => true } do |f| %>
-         <%= f.hidden_field :uuid %>
-
-         <%= f.text_area :comment, :rows => 15, :cols => 5 %><br>
-
-         <%= f.submit %>
-       <% end %>
-    </div></li>
-
-    <li><div>
-        <p>Hossa! Here it is:</p>
-    </div></li>
-  </ol>
-
-  <div class="entrytitle">
-    <h2>See what other already uploaded</h2>
-  </div>
-
-  <div class="entrybody">
-    <p>Files may be randomly!</p>
-
-    <div id="assets" style="min-height: 500px;">
-        <%= render @assets %>
+    <div class="entrytitle">
+      <h2>See what other already uploaded</h2>
     </div>
-  </div>
+
+    <div class="entrybody">
+      <p>Files may be randomly deleted!</p>
+
+      <div id="assets" style="min-height: 500px;">
+          <%= render @assets %>
+      </div>
+    </div>
 
 </div>
-
-<hr class="space" />
-
-  <script type="text/javascript" charset="utf-8">
-    $(document).ready(function() {
-      var interval;
-
-      var upload = new AjaxUpload( $('#upload_button'), {
-        action: '/assets?X-Progress-ID=<%= @asset.uuid  %>',
-        name: 'asset[file]',
-        onSubmit : function(file, ext){
-          this.setData({
-            'authenticity_token': $('input[name=authenticity_token]').val(),
-            'asset[uuid]': '<%= @asset.uuid  %>'
-          });
-
-          $('#upload_button').hide();
-          $('#upload_progress_bar').show();
-          this.disable();
-
-          interval = window.setInterval(function(){
-            jQuery.ajax({
-                type: "GET",
-                url: "/progress?X-Progress-ID=<%= @asset.uuid  %>",
-                dataType: "json",
-                success: function(upload) {
-                  if (upload.state == 'uploading') {
-                     upload.percents = Math.floor((upload.received / upload.size)*1000)/10;
-                     var bar = $.browser.safari ? $('#progressbar', parent.document) : $('#progressbar');
-                     bar.css({width: upload.percents+'%'});
-                     $('#percents').html(upload.percents);
-                  }
-
-                  if (upload.state == 'done' || upload.state == 'error') {
-                    window.clearInterval(interval);
-                    $('#upload_button').show();
-                    $('#upload_progress_bar').hide();
-                    this.enable();
-                  }
-                  if (upload.state == 'error') {
-                    alert("Error");
-                  }
-                }
-            });
-          }, 1500);
-
-        },
-        onComplete: function(file, response){
-          alert(file + " " + response);
-          window.clearInterval(interval);
-          this.enable();
-        }
-      });
-
-    });
-  </script>
