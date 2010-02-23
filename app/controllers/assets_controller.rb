@@ -18,8 +18,8 @@ class AssetsController < ApplicationController
     @asset = Asset.find_or_initialize_by_uuid(params[:asset][:uuid])
     @asset.update_attributes(params[:asset])
     
-    render @asset if request.xhr?
-   rescue => e
+    render @asset
+  rescue => e
     render :text => "Error with uploading File: #{e.message}", :status => 500
   end
   

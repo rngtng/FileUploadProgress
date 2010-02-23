@@ -2,12 +2,11 @@
   <% if asset.file.path %>
     <% if asset.file_content_type =~ /image/  %>
       <%= link_to image_tag(asset.file.url, :width => 75, :height => 75), asset_path( asset ), :style => "text-decoration:none"  %>
-    <% else %>
-      <%= asset.file.path %>
-     <% end %>
+    <% end %>
+    <%= asset.file_file_size.to_i / 1024 %> KB<br>
+    <%= asset.file.path %>
   <% else %>
    <em>no file yet</em>
   <% end %>
-  <br>  
-  <%= asset.file_file_size.to_i / 1024 %> KB
+  <br>
   <%= asset.comment %>
