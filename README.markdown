@@ -66,7 +66,7 @@ which adds an access point to Apache, so you can easily retrieve the total and u
 * Get rid of Apache module
 * better error handling
 * fix *hover* for file select button
-
+* add awesome Buttons: http://github.com/gr2m/awesome-buttons
 
 ## A quick step by step Howto:
 
