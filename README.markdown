@@ -60,6 +60,33 @@ which adds an access point to Apache, so you can easily retrieve the total and u
 * Apache 2 + [Passenger Module](http://www.modrails.com/)
 * capistrano
 
+# Passenger File
+<VirtualHost *:80>
+  ServerName nups.loc
+  DocumentRoot "/Users/ted/Sites/rails/fup/public"
+  RailsEnv development
+  RailsAllowModRewrite off
+  
+  #Porter On
+  #PorterSharedSecret fup
+      
+  <directory "/Users/ted/Sites/rails/fup/public">
+    Order allow,deny
+    Allow from all
+  </directory>
+  
+  # needed for tracking upload progess
+  <Location />
+      # enable tracking uploads in /
+      TrackUploads On
+  </Location>
+  
+  <Location /progress>
+      # enable upload progress reports in /progress
+      ReportUploads On
+  </Location>
+    
+</VirtualHost>
 
 ## Future Improvements
 * add HTML 5 features (Drag'n Drop, multiple??)
